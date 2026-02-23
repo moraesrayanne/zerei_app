@@ -26,6 +26,8 @@ export const colors = {
   border: '#e4e4e7',
   input: '#e4e4e7',
   focusRing: '#643cdd',
+
+  error: '#ef4343',
 };
 
 export type Colors = typeof colors;

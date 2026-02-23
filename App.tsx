@@ -1,12 +1,18 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components/native';
-import AuthScreen from './src/features/auth/screens';
 import { theme } from './src/theme';
+import { NavigationContainer } from '@react-navigation/native';
+import AuthRoutes from './src/navigation';
+import { PaperProvider } from 'react-native-paper';
 
 export default function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <AuthScreen />
-    </ThemeProvider>
+    <PaperProvider theme={theme}>
+      <NavigationContainer>
+        <ThemeProvider theme={theme}>
+          <AuthRoutes />
+        </ThemeProvider>
+      </NavigationContainer>
+    </PaperProvider>
   );
 }

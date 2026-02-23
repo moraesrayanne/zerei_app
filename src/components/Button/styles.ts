@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 export const Button = styled(Pressable)`
   background-color: ${({ theme }) => theme.colors.primary};
   width: 100%;
-  height: 42;
+  height: 48px;
   border-radius: ${({ theme }) => theme.radius.md}px;
   justify-content: center;
   align-items: center;
