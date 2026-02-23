@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components/native';
-import AuthScreen from './src/navigation/features/auth/screens';
+import AuthScreen from './src/features/auth/screens';
 import { theme } from './src/theme';
 
 export default function App() {
