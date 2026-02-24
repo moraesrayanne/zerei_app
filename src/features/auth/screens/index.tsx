@@ -4,12 +4,27 @@ import TextField from '../../../components/Textfield';
 import { useState } from 'react';
 import * as S from './styles';
 import Link from '../../../components/Link';
+import { useMutation } from '@tanstack/react-query';
+import { signInWithPassword } from '../../../api/auth';
 
 const AuthScreen = () => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
-  const handlePress = () => {
+  const { mutate, isPending, isError } = useMutation({
+    mutationFn: ({ email, password }: { email: string; password: string }) =>
+      signInWithPassword(email, password),
+    onError: () => {
+      // TODO: handle error
+    },
+    onSuccess: () => {
+      // TODO: handle token storage
+      // TODO: navigate to home
+    },
+  });
+
+  const handleLogin = async () => {
+    mutate({ email: login, password });
     Keyboard.dismiss();
   };
 
@@ -27,7 +42,7 @@ const AuthScreen = () => {
           value={login}
           onChangeText={setLogin}
           keyboardType='email-address'
-          hasError
+          hasError={isError}
         />
         <TextField
           label='Senha'
@@ -35,11 +50,14 @@ const AuthScreen = () => {
           value={password}
           onChangeText={setPassword}
           isPassword
+          hasError={isError}
         />
         <S.LinkWrapper>
           <Link screen='Login' label='Esqueceu a senha?' />
         </S.LinkWrapper>
-        <Button onPress={handlePress}>Entrar</Button>
+        <Button loading={isPending} onPress={handleLogin}>
+          Entrar
+        </Button>
       </S.Container>
     </TouchableWithoutFeedback>
   );

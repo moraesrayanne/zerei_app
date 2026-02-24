@@ -58,7 +58,7 @@ const TextField = ({
           visible={!!helpText}
           padding='none'
           style={{
-            color: theme.colors.mutedText,
+            color: hasError ? theme.colors.destructive : theme.colors.mutedText,
           }}
         >
           {helpText}
