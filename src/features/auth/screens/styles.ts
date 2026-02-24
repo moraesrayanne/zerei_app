@@ -1,11 +1,15 @@
 import styled from 'styled-components/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-export const Container = styled.View`
-  justify-content: center;
-  flex: 1;
-  padding: 20px;
-  gap: ${({ theme }) => theme.spacing.md}px;
+export const Container = styled.ScrollView.attrs(({ theme }) => ({
+  contentContainerStyle: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    padding: 20,
+    gap: theme.spacing.md,
+  },
+  keyboardShouldPersistTaps: 'handled',
+}))`
   background-color: ${({ theme }) => theme.colors.background};
 `;
 

@@ -18,9 +18,9 @@ export const Header = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 20px 16px 20px;
+  padding: 24px 20px 0px 20px;
   background-color: ${({ theme }) => theme.colors.background};
-  padding-top: ${Platform.OS === 'ios' ? '50px' : '30px'};
+  padding-top: ${Platform.OS === 'ios' ? '60px' : '30px'};
 `;
 
 export const ProfileInfo = styled.View`
