@@ -38,3 +38,10 @@ export const Subtitle = styled.Text`
   color: ${({ theme }) => theme.colors.secondaryText};
   text-align: center;
 `;
+
+export const ErrorMessage = styled.Text`
+  color: ${({ theme }) => theme.colors.error};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
+  font-size: ${({ theme }) => theme.typography.fontSize.sm}px;
+  margin-top: -10px;
+`;

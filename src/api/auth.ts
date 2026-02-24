@@ -12,3 +12,11 @@ export const signInWithPassword = async (email: string, password: string) => {
 
   return data;
 };
+
+export const signOut = async () => {
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    throw new Error('ERROR_SIGNING_OUT');
+  }
+};

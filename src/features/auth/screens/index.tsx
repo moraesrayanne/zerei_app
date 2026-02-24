@@ -11,16 +11,9 @@ const AuthScreen = () => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
-  const { mutate, isPending, isError } = useMutation({
+  const { mutate, isPending, isError, error } = useMutation({
     mutationFn: ({ email, password }: { email: string; password: string }) =>
       signInWithPassword(email, password),
-    onError: () => {
-      // TODO: handle error
-    },
-    onSuccess: () => {
-      // TODO: handle token storage
-      // TODO: navigate to home
-    },
   });
 
   const handleLogin = async () => {
@@ -42,7 +35,6 @@ const AuthScreen = () => {
           value={login}
           onChangeText={setLogin}
           keyboardType='email-address'
-          hasError={isError}
         />
         <TextField
           label='Senha'
@@ -50,8 +42,12 @@ const AuthScreen = () => {
           value={password}
           onChangeText={setPassword}
           isPassword
-          hasError={isError}
         />
+        {isError && (
+          <S.ErrorMessage>
+            E-mail ou senha incorretos. Tente novamente.
+          </S.ErrorMessage>
+        )}
         <S.LinkWrapper>
           <Link screen='Login' label='Esqueceu a senha?' />
         </S.LinkWrapper>
